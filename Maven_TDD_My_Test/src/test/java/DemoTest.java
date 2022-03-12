@@ -62,4 +62,40 @@ class DemoTest {
 
 
     }
+
+    @Test
+    public void test5Negative(){
+
+        Demo demoTest = new Demo();
+
+        //Given
+        String[] array = {"1", "5", "-15", "9", "4"};
+        String[] expected = {"-15", "1", "4", "5", "9"};
+
+        //When
+        String[] actual = demoTest.reArrange3(array);
+
+        //Then
+        Assert.assertArrayEquals(expected,actual);
+
+
+    }
+
+    @Test
+    public void test6Negative(){
+
+        Demo demoTest = new Demo();
+
+        //Given
+        String[] array = {"1", "-5", "-15", "9", "-4"};
+        String[] expected = {"-15", "-5", "-4", "1", "9"};
+
+        //When
+        String[] actual = demoTest.reArrange3(array);
+
+        //Then
+        Assert.assertArrayEquals(expected,actual);
+
+
+    }
 }

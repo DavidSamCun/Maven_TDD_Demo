@@ -4,6 +4,19 @@ import java.util.Locale;
 
 public class Demo {
 
+    /*@**
+    Write code that would take a String array of numbers, and sort them from
+    smallest to largest. Without converting from a string. So strictly observe string type
+    Then. Think of edge cases with
+        - words
+        - decimals,
+        - negative,
+        - leading 0's
+
+    impossible to solve are fractions and exponents
+    *@*/
+
+
     String[] array;
     //Sort numbers without converting to string;
 
@@ -49,13 +62,17 @@ public class Demo {
     }
 
     public boolean firstLineIsBigger(String input1, String input2){     //Condensing
-        if (input1.length() > input2.length()){
+        if(input1.charAt(0) == '-'){
+            return false;
+        } else if (input2.charAt(0) == '-'){
+            return true;
+        }else if (input1.length() > input2.length()){
             return true;
         }
         return false;
     }
 
-    public String[] reArrange3(String[] input){
+    public String[] reArrange3(String[] input){     //Works for negative;
         String temp = "";
 
         for (int j = 0; j <input.length-1; j++){
@@ -72,6 +89,12 @@ public class Demo {
     }
 
     public boolean firstUnicodeBigger(String input1, String input2){
+        if (input1.charAt(0) == '-' && input2.charAt(0) =='-'){
+            if (input1.length() == input2.length() && input1.compareTo(input2) > 0){
+                return false;
+            }
+        }
+
         if (input1.length() == input2.length() && input1.compareTo(input2) > 0){
             return true;
         }
@@ -80,6 +103,23 @@ public class Demo {
 //    public boolean firstLineSmaller(String )
 
     //public boolean
+
+    public String[] reArrange4(String[] input){
+        String temp = "";
+
+        //for (int j = 0; j <input.length-1; j++){
+            for(int i = 0; i<input.length-1; i++){
+                if (firstLineIsBigger(input[i],input[i+1]) || firstUnicodeBigger(input[i], input[i+1])) {
+                    temp = input[i];
+                    input[i] = input[i+1];
+                    input[i+1] = temp;
+                    i=0;
+                }
+            }
+        //}
+        System.out.println(Arrays.toString(input));
+        return input;
+    }
 
 
 
